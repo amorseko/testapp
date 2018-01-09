@@ -1,0 +1,147 @@
+<ion-view view-title="Claim History" align-title="center" ng-cloak>
+  <ion-content class="has-header has-footer" has-bouncing="false" id="claim-history">
+    <admedika-toolbar type="header"></admedika-toolbar>
+    <!-- SEARCH CONTENT HERE -->
+    <div class="text-white height-45px text-m-small">
+      <div class="row margin-none padding-none">
+        <div class="col col-10 margin-none sub-header padding-top-medium-small padding-left-x-medium bg-red-v1 height-45px" ng-if="$root.widthPage >= 720">
+          <span class="float-left" style="padding-top: 5px;">Benefit</span>
+        </div>
+        <div class="col col-20 margin-none padding-top-medium-small padding-left-x-medium bg-red-v1 height-45px" ng-if="$root.widthPage < 720">
+          <span class="float-left">Benefit</span>
+        </div>
+        <!-- OPTION BENEFIT HERE -->
+        <div class="col col-50 margin-none sub-header padding-small bg-red-v1 height-45px text-left" ng-if="$root.widthPage >= 720">
+          </label> -->
+          <label class="item item-input item-stacked-label border-none">
+            <select id="claim-benefit" name="gender" class="has-shadow" ng-required="true" ng-model="planId" ng-init="planId = '*'" ng-change="$.change(planId)">
+              <option value="*">Semua Benefit</option>
+              <option ng-repeat="option in $.profile.admedika.plans track by option.planId" value="{{ option.planId }}">{{ option.planType | titleize }}</option>
+            </select>
+          </label>
+        </div>
+        <div class="col col-40 mp-select-benefit bg-red-v1 height-45px text-left" ng-if="$root.widthPage < 720">
+          <label class="item item-input item-select main-select border-radius-7 text-right text-gray-v5">
+            <select id="claim-benefit" class="text-gray-v5 text-left left-none" name="benefits" ng-model="planId" ng-init="planId = '*'" ng-change="$.change(planId)">
+              <option value="*">Semua Benefit</option>
+              <option ng-repeat="option in $.profile.admedika.plans track by option.planId" value="{{ option.planId }}">{{ option.planType | titleize }}</option>
+            </select>
+          </label>
+        </div>
+        <!-- SHORT CONTENT HERE -->
+        <div id="claim-sort" class="col col-20 sub-header padding-none bg-gray-v2 height-45px" ng-click="$.sort()">
+          <img class="object-fit contain t-header-image height-45px" src="img/assets/claim-sort-date.png" alt="sort" width="100%" />
+        </div>
+        <!-- RANGE DATE CONTENT HERE -->
+        <div id="claim-range" class="col col-20 sub-header padding-none bg-gray-v3 height-45px" ng-click="$.range()">
+          <img class="object-fit contain t-header-image height-45px" src="img/assets/claim-date-range.png" alt="sort" width="100%" />
+        </div>
+      </div>
+    </div>
+    <!-- CLAIM CONTENT HERE -->
+    <div class="claim-content text-small">
+      <!-- CLAIM LIST CONTENT HERE -->
+      <div class="claim-list" ng-repeat="claim in $.claims" ng-class-odd="'claim-odd'">
+        <div class="row margin-none padding-none">
+          <!-- CLAIM ID CONTENT HERE -->
+          <div class="col">
+            <span class="text-red-v3 font-bold">CLAIM ID</span>
+          </div>
+          <div class="col">
+            <span class="text-gray-v1">{{ claim.claimId }}</span>
+          </div>
+          <!-- STATUS CONTENT HERE -->
+          <div class="col">
+            <span class="text-red-v3 font-bold">STATUS</span>
+          </div>
+          <div class="col">
+            <span class="text-gray-v1">{{ claim.status }}</span>
+          </div>
+        </div>
+        <div class="row margin-none padding-none">
+          <!-- PROVIDER CONTENT HERE -->
+          <div class="col">
+            <span class="text-red-v3 font-bold">PROVIDER</span>
+          </div>
+          <div class="col">
+            <span class="text-gray-v1">{{ claim.providerName }}</span>
+          </div>
+          <!-- BENEFIT CONTENT HERE -->
+          <div class="col">
+            <span class="text-red-v3 font-bold">BENEFIT</span>
+          </div>
+          <div class="col">
+            <span class="text-gray-v1">{{ claim.planType || '-' }}</span>
+          </div>
+        </div>
+        <div class="row margin-none padding-none">
+          <!-- ADMISSION CONTENT HERE -->
+          <div class="col">
+            <span class="text-red-v3 font-bold">ADMISSION</span>
+          </div>
+          <div class="col">
+            <span class="text-gray-v1">{{ $.parseDate(claim.admissionDate) }}</span>
+          </div>
+          <!-- DIASNOSIS CONTENT HERE -->
+          <div class="col">
+            <span class="text-red-v3 font-bold">DIAGNOSIS</span>
+          </div>
+          <div class="col">
+            <span class="text-gray-v1">{{ claim.diagnosis }}</span>
+          </div>
+        </div>
+        <div class="row margin-none padding-none">
+          <!-- DISCHARE CONTENT HERE -->
+          <div class="col col-25">
+            <span class="text-red-v3 font-bold">DISCHARE</span>
+          </div>
+          <div class="col col-25">
+            <span class="text-gray-v1">{{ $.parseDate(claim.dischargeDate) }}</span>
+          </div>
+        </div>
+        <!-- HR CONTENT HERE -->
+        <hr class="hr-style-v1 width-95">
+        <div class="row margin-none padding-none">
+          <!-- INCURED CONTENT HERE -->
+          <div class="col">
+            <span class="text-red-v3 font-bold">INCURED</span>
+          </div>
+          <!-- APPROVED CONTENT HERE -->
+          <div class="col">
+            <span class="text-red-v3 font-bold">APPROVED</span>
+          </div>
+          <!-- EXCESS CONTENT HERE -->
+          <div class="col">
+            <span class="text-red-v3 font-bold">EXCESS</span>
+          </div>
+        </div>
+        <div class="row margin-none padding-none">
+          <!-- INCURED CONTENT HERE -->
+          <div class="col">
+            <span class="text-gray-v1">RP. {{ claim.incured | number : 0 }}</span>
+          </div>
+          <!-- APPROVED CONTENT HERE -->
+          <div class="col">
+            <span class="text-gray-v1">RP. {{ claim.approved | number : 0 }}</span>
+          </div>
+          <!-- APPROVED CONTENT HERE -->
+          <div class="col">
+            <span class="text-gray-v1">RP. {{ claim.excess | number : 0 }}</span>
+          </div>
+        </div>
+        <hr class="hr-style-v1 width-95">
+        <div class="row margin-none padding-none">
+          <!-- REMARKS CONTENT HERE -->
+          <div class="col col-25">
+            <span class="text-red-v3 font-bold">REMARKS</span>
+          </div>
+          <div class="col">
+            <span class="text-gray-v1">{{ claim.remarks || '-' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ion-infinite-scroll on-infinite="$.getClaims()" distance="15%" ng-if="!$.hasClaims"></ion-infinite-scroll>
+  </ion-content>
+  <admedika-toolbar type="footer"></admedika-toolbar>
+</ion-view>

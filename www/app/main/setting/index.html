@@ -1,0 +1,70 @@
+<ion-view view-title="Setting Menu">
+  <ion-nav-title>
+    <p class="title"><img src="img/assets/setting-final.png" class="image-size-admedika-header top-5 relative-position"> <span>Setting</span></p>
+  </ion-nav-title>
+  <ion-content class="has-header has-footer">
+    <section class="bg-gray-v1 flex-container-column setting-container">
+      <div class="text-gray-v1 padding-top-large">
+        <a id="setting-profile" ui-sref="app.main.profile.mine" class="item">My Profile
+          <i class="icon ion-chevron-right text-gray-v2 float-right"></i>
+        </a>
+        <a id="setting-terms" ui-sref="app.main.support.terms-condition" class="item">
+          Term &amp; Condition
+          <i class="icon ion-chevron-right text-gray-v2 float-right"></i>
+        </a>
+        <a id="setting-faq" ui-sref="app.main.support.faq" class="item">
+          F.A.Q
+          <i class="icon ion-chevron-right text-gray-v2 float-right"></i>
+        </a>
+        <a id="setting-about" ui-sref="app.main.support.about" class="item">
+          About AdMedika
+          <i class="icon ion-chevron-right text-gray-v2 float-right"></i>
+        </a>
+      </div>
+      <div class="margin-top-large">
+        <h5 class="text-left margin-small text-gray-v3">Contact Support</h5>
+        <div class="row bg-white">
+          <div class="col border-right-gray-1 text-center padding-top-small">
+            <a class="text-gray-v1" phone-call>
+              <img src="img/assets/call-button.png" class="image-size-x-small" alt="Call Center" /> <label>Call Support</label>
+            </a>
+          </div>
+          <div class="col text-center padding-top-small">
+            <a id="setting-contact" ui-sref="app.main.support.contact-us" class="text-gray-v1 email-support">
+              <i class="icon ion-ios-email-outline mail-icon"></i> <label>Email Support</label>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center width-90 margin-auto margin-top-large">
+        <div class="row">
+          <div class="col">
+            <img src="img/assets/my-addmedika-info-setting.png" class="image-size-x-medium">
+          </div>
+          <div class="col">
+            <img src="img/assets/my-persona-logo.png" class="image-size-x-medium">
+          </div>
+          <div id="version-update" class="col text-center padding-none" myadmedika-check>
+            <span class="block-display text-x-small text-gray-v4">
+              {{ $.app.name || 'MyPersona' }} {{ $.app.version ? 'Ver.' : '' }}{{ $.app.version }}</span>
+            <i class="ion-ios-loop text-x-large text-gray-v4"></i>
+            <span class="block-display text-x-small text-gray-v4">Check for update</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p class="copyright">&copy; MyPersona merupakan aplikasi ponsel dari PT AdMinistrasi Medika.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div id="logout-button" class="col text-large text-center">
+            <a ng-click="$root.logout()">
+              <img  src="img/assets/logout-icon-black.png" class="image-size-x-small" alt="Logout" /> Logout
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </ion-content>
+  <toolbar type="footer"></toolbar>
+</ion-view>

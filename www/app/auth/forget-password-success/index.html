@@ -1,0 +1,19 @@
+<ion-view view-title="Forget Password Success">
+	<ion-nav-title>
+    <p class="title"><img src="img/assets/header-logo.png"></p>
+  </ion-nav-title>
+	<ion-content class="has-header" scroll="false">
+		<div class="mp-content mp-push-top">
+			<center>
+				<img class="image-size-medium center" src="img/assets/success-forgot-password.png" alt="Forgot Password" />
+			</center>
+			<h4 ng-if="$root.widthPage < 720" class="text-center">Password Terkirim</h4>
+			<h3 ng-if="$root.widthPage >= 720" class="text-center">Password Terkirim</h3>
+			<p class="mp-help-block tablet-text-medium text-center">Cek email untuk melihat password anda. <br>Silahkan log in kembali</p>
+			<div class="mp-form-input width-80 center">
+				<button id="login" class="button button-block button-positive" ui-sref="app.auth.login">LOG IN</button>
+			</div>
+		</div>
+	</ion-content>
+	<ion-footer-bar align-title="center" class="bar-positive mp-footer"></ion-footer-bar>
+</ion-view>

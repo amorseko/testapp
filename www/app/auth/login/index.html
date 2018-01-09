@@ -1,0 +1,78 @@
+<ion-view hide-nav-bar="true" hide-back-button="true" view-title="Login" cache-view="false">
+  <ion-content has-bouncing="false">
+    <!-- MAIN CONTAINER -->
+    <section class="login-container">
+      <div id="slider" class="login-content">
+        <!-- INSERT IMAGE SLIDER HIRE -->
+        <ion-slide-box auto-play="true" show-pager="true" does-continue="true" class="image" id="images" style="margin-bottom: -5px;height: {{$.heightImage}};">
+          <ion-slide>
+            <img src="img/assets/x-login-slider-06.jpg" ng-if="$.heightPage <= 480" alt="" class="width-100 img-slider" />
+            <img src="img/assets/img-slider/01.png" ng-if="$.heightPage > 480" alt="" class="width-100 img-slider" />
+            <div class="icon-login" ng-if="$.heightPage > 480">
+              <img src="img/assets/login-image/01.png">
+              <p>Informasi Jaminan <br>Kesehatan Anda</p>
+            </div>
+          </ion-slide>
+          <ion-slide>
+            <img src="img/assets/x-login-slider-02.jpg" ng-if="$.heightPage <= 480" alt="" class="width-100 img-slider" />
+            <img src="img/assets/img-slider/02.png" ng-if="$.heightPage > 480" alt="" class="width-100 img-slider" />
+            <div class="icon-login" ng-if="$.heightPage > 480">
+              <img src="img/assets/login-image/03.png">
+              <p>Asisten Kesehatan <br>Pribadi Anda</p>
+            </div>
+          </ion-slide>
+          <ion-slide>
+            <img src="img/assets/x-login-slider-03.jpg" ng-if="$.heightPage <= 480" alt="" class="width-100 img-slider" />
+            <img src="img/assets/img-slider/04.png" ng-if="$.heightPage > 480" alt="" class="width-100 img-slider" />
+            <div class="icon-login" ng-if="$.heightPage > 480">
+              <img src="img/assets/login-image/04.png">
+              <p>Keuntungan & Diskon <br>Khusus Untuk Anda</p>
+            </div>
+          </ion-slide>
+          <ion-slide>
+            <img src="img/assets/x-login-slider-05.jpg" ng-if="$.heightPage <= 480" alt="" class="width-100 img-slider" />
+            <img src="img/assets/img-slider/05.png" ng-if="$.heightPage > 480" alt="" class="width-100 img-slider" />
+            <div class="icon-login" ng-if="$.heightPage > 480">
+              <img src="img/assets/login-image/05.png">
+              <p>Transaksi Online <br>Pribadi Anda</p>
+            </div>
+          </ion-slide>
+        </ion-slide-box>
+      </div>
+      <!-- FORM CONTAINER -->
+      <form name="form" id="formLogin" ng-submit="$.submit(data)" novalidate="true" ng-init="isVisible = false" ng-disabled="$.isLoading">
+        <!-- USERNAME -->
+        <label class="item item-input border-top-none">
+          <span class="input-label width-10"><i class="ion-ios-email-outline icon-medium text-red-v1"></i></span>
+          <input name="username" type="email" placeholder="mail@email.com" ng-model="data.username" ng-required="true">
+        </label>
+        <!-- PASSWORD -->
+        <div class="item item-input">
+          <span class="width-10"><i class="ion-ios-locked-outline icon-medium text-red-v1"></i></span>
+          <input name="password" type="password" placeholder="password" ng-model="data.password" ng-required="true" ng-hide="isVisible">
+          <input name="passwordText" type="text" placeholder="password" ng-model="data.password" ng-required="true" ng-show="isVisible">
+          <span id="toggle" class="input-label width-10 margin-right-small" ng-click="isVisible = !isVisible">
+            <a>
+              <i class="icon-medium" ng-class="isVisible ? 'ion-eye-disabled' : 'ion-eye'" style="display:block"></i>
+            </a>
+          </span>
+        </div>
+
+        <!-- LOGIN BUTTON -->
+        <button id="login" class="button button-block button-full button-positive margin-none" type="submit" ng-disabled="$.isLoading">
+          {{ $.isLoading ? 'PLEASE WAIT' : 'LOG IN NOW' }}
+        </button>
+
+        <!-- REGISTER & FORGET PASSWORD -->
+        <div class="button-bar">
+          <div class="col-60">
+            <button name="register" class="button button-assertive button-full margin-none no-wrap text-medium remove-after" ui-sref="app.auth.register">REGISTER MYPERSONA</button>
+          </div>
+          <div class="col-40">
+            <button name="forget-password" class="button button-dark button-full margin-none text-small remove-after" ui-sref="app.auth.forget-password">FORGET PASSWORD</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </ion-content>
+</ion-view>

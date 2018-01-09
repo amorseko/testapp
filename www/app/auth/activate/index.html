@@ -1,0 +1,28 @@
+<ion-view view-title="Activate Account" cache-view="true">
+  <ion-nav-title>
+    <p class="title"><img src="img/assets/header-logo.png"></p>
+  </ion-nav-title>
+  <ion-content class="has-header" id="auth">
+    <form name="form" class="padding-top-x-large" ng-submit="$.submit(data)" novalidate="true" ng-disabled="$.isLoading">
+      <img src="img/assets/activation-account.png" class="image-size-medium margin-auto block-display" alt="Forgot Password" />
+      <h3 id="forgetPass" ng-if="$root.widthPage >= 720" class="text-center">Registrasi Berhasil</h3>
+      <h4 ng-if="$root.widthPage < 720" class="text-center">Registrasi Berhasil</h4>
+      <div class="margin-auto width-80">
+        <p class="text-center tablet-text-medium">Masukan 4 digit kode aktifasi yang terkirim ke email untuk mengaktifkan akun MyPersona Anda</p>
+        <label class="item item-input has-shadow main-input">
+					<input name="code" type="text" ng-model="data.code" ng-required="true" ng-minlength="4" ng-maxlength="4">
+				</label>
+        <div class="margin-vertical-small text-error" ng-if="form.code.$touched && form.code.$dirty">
+          <small ng-show="form.code.$error.required"><i class="ion icon-ios-close-outline"></i>
+            Please fill your activation code.
+          </small>
+        </div>
+        <button class="button button-block button-positive border-radius-10" type="submit" ng-disabled="form.$invalid || $.isLoading">{{ $.isLoading ? 'PLEASE WAIT' : 'ACTIVATE MYPERSONA' }}</button>
+      </div>
+      <p class="mp-help-block text-center">
+        Kode aktifasi tidak terkirim? <span phone-call>Hubungi call center kami</span>
+      </p>
+    </form>
+  </ion-content>
+  <ion-footer-bar align-title="center" class="bar-positive mp-footer"></ion-footer-bar>
+</ion-view>

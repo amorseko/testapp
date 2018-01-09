@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="viewport-fit=cover, initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="format-detection" content="telephone=no">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' 139.59.98.26:4321">-->
+    <title>MyPersona Apps</title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <!-- style:css -->
+    <link rel="stylesheet" href="css/app.min.css">
+    <!-- endinject -->
+  </head>
+
+  <body>
+    <ion-nav-view></ion-nav-view>
+    <!-- script:js -->
+	<script src="js/app.min.js"></script>
+	<!-- endinject -->
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+	<!-- SENTRY LOG -->
+	<!-- PLEASE DISABLE WHEN IN DEVELOPMENT MODE -->
+    <script>
+      Raven
+        .config('https://9cac13eaef9f4daa8a9992348c9f2ab7@sentry.lussa.net/14', {
+          release: '2.0.1'
+        })
+        .addPlugin(Raven.Plugins.Angular)
+        .install();
+    </script>
+  </body>
+</html>

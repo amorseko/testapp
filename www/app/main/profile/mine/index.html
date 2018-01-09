@@ -1,0 +1,99 @@
+<ion-view view-title="My Profile" cache-view="false" ng-cloak>
+  <ion-nav-title>
+    <p class="title"><img src="img/assets/my-profile.png" class="image-size-admedika-header top-5 relative-position"> My Profile</p>
+  </ion-nav-title>
+  <ion-content class="has-header has-footer">
+    <!-- MAIN CONTENT HERE -->
+    <section class="flex-container-column bg-gray-v1 min-height-full flex-display" ng-show="$.profile._id">
+      <article class="flex-1">
+        <div id="avatar-profile" class="width-100 height-150 bg-profile">
+          <!-- IMAGE AVATAR HERE  -->
+          <div class="width-100 margin-none" image-upload>
+            <div class="row padding">
+              <div class="col col-25">
+                <toolbar type="avatar"></toolbar>
+              </div>
+              <div class="col profile-name">
+                <p id="profile-name" class="capitalize text-white text-large">{{ $.profile.name | titleize }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- FORM INFO HERE  -->
+        <div class="width-100 margin-auto bg-white">
+          <div class="form-group">
+            <div class="row text-x-medium">
+              <div class="col static-label text-gray-v1">
+                Tanggal Lahir
+              </div>
+              <div id="profile-birthdate" class="col static-paragraf text-red-v3">
+                {{ $.parseBirthday($.profile.birthday || '-') }}
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row text-x-medium">
+              <div class="col static-label text-gray-v1">
+                No. Handphone
+              </div>
+              <div id="profile-phone" class="col static-paragraf text-red-v3">
+                {{ $.profile.phone || '-' }}
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row text-x-medium">
+              <div class="col static-label text-gray-v1">
+                Email
+              </div>
+              <div id="profile-email" class="col static-paragraf text-red-v3">
+                {{ $.profile.email }}
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row text-x-medium">
+              <div class="col static-label text-gray-v1">
+                MyPersona ID
+              </div>
+              <div id="profile-id" class="col static-paragraf text-red-v3">
+                {{ $.profile.id }}
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row text-x-medium">
+              <div class="col static-label text-gray-v1">
+                No. AdMedika
+              </div>
+              <div class="col static-paragraf text-red-v3">
+                <span id="profile-card" ng-show="$.profile.admedika.cardNumber">
+                  {{ $.profile.admedika.cardNumber }}
+                </span>
+                <span id="profile-connect" ng-hide="$.profile.admedika.cardNumber" ui-sref="app.main.admedika.connect">
+                  <i class="fa fa-pencil-square-o"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row text-x-medium">
+              <div class="col static-label text-gray-v1">
+                No. BPJS Kesehatan
+              </div>
+              <div id="profile-bpjsId" class="col static-paragraf text-red-v3">
+                {{ $.profile.admedika.member.bpjsId || '-' }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="padding-top-small margin-auto width-80">
+          <!-- BUTTON EDIT PASSWORD HERE -->
+          <button id="profile-edit-password" ui-sref="app.main.profile.change-password" class="button button-block button-positive border-radius-10">EDIT PASSWORD</button>
+        </div>
+      </article>
+    </section>
+    <ion-infinite-scroll on-infinite="$.getProfile()" ng-if="!$.hasProfile" distance="100%"></ion-infinite-scroll>
+  </ion-content>
+  <toolbar type="footer"></toolbar>
+</ion-view>

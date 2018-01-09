@@ -1,0 +1,47 @@
+<ion-view view-title="Change Password" cache-view="false" ng-cloak>
+	<ion-nav-title>
+		<p class="title">
+			<img src="img/assets/change-password.png" class="image-size-change-password margin-top-small"> Change Password
+		</p>
+	</ion-nav-title>
+	<ion-content class="has-header">
+		<!-- MAIN CONTENT  -->
+		<section class="flex-container-column height-full">
+			<!-- FORM CHANGE PASSWORD HERE -->
+			<form name="form" class="width-80 margin-auto padding-top-x-large" ng-submit="$.submit(data)" novalidate="true" ng-disabled="$.isLoading">
+				<!-- NEW PASSWORD HERE  -->
+					<span class="input-label width-100">Password</span>
+					<label class="item item-input item-stacked-label has-shadow border-radius-10">
+						<input name="password" type="password" ng-model="data.password" ng-required="true" ng-minlength="6">
+					</label>
+					<div class="margin-vertical-small text-error" ng-if="form.password.$touched && form.password.$dirty">
+						<small ng-show="form.password.$error.required"><i class="ion icon-ios-close-outline"></i>
+							Please fill your password.
+						</small>
+						<small ng-show="form.password.$error.minlength"><i class="ion icon-ios-close-outline"></i>
+							Password 6 character minimum.
+						</small>
+					</div>
+					<!-- NEW PASSWORD CONFIRMATION HERE -->
+					<span class="input-label margin-top-small width-100">Ulangi Password</span>
+					<label class="item item-input item-stacked-label has-shadow border-radius-10">
+						<input name="passwordConfirmation" type="password" ng-model="data.passwordConfirmation" ng-required="true" ng-minlength="6" ng-match="data.password">
+					</label>
+					<div class="margin-vertical-small text-error" ng-if="form.password.$touched && form.password.$dirty">
+						<small ng-show="form.password.$error.required"><i class="ion icon-ios-close-outline"></i>
+							Please fill your password confirmation.
+						</small>
+					</div>
+					<!-- BUTTON SUBMIT HERE  -->
+					<button class="button button-block button-positive margin-top-large-force border-radius-10" type="submit" ng-disabled="form.$invalid || $.isLoading">{{ $.isLoading ? 'PLEASE WAIT' : 'CHANGE PASSWORD' }}</button>
+			</form>
+		</section>
+	</ion-content>
+	<ion-footer-bar align-title="center" class="bar-assertive footer-content">
+    <div class="col">
+  		<div class="row menu-container">
+  			<div class="col menu-icon"><a ui-sref="app.main.home" ui-sref-active="active"><img src="img/assets/footer-icon/home-icon.png" class="image-size-home-footer"></a></div>
+  		</div>
+  	</div>
+  </ion-footer-bar>
+</ion-view>

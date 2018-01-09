@@ -1,0 +1,135 @@
+<ion-view hide-nav-bar="true" hide-back-button="true" view-title="Show My Digital Card" ng-cloak>
+  <ion-content class="digital-card" has-bouncing="false" style="padding-left: 2.5%;padding-right: 2.5%;">
+    <article class="digital-card-content" ng-show="$.profile.email">
+      <a id="card-close" class="btn-close-card" ng-click="$.back()">
+        <i class="ion-ios-close-outline"></i>
+      </a><br />
+      <div class="card-header">
+        <div class="row">
+          <div class="col">
+            <div class="card-photo">
+              <div class="card-photo-content">
+                <div class="card-avatar">
+                  <img id="card-photo" ng-src="{{ $.profile.photo | cdn }}" class="img-circle img-my-card object-fit cover" image-fallback />
+                </div>
+                <div class="card-info">
+                  <h4 id="card-fullname" class="card-fullname">{{ $.profile.admedika.member.fullName }}</h4>
+                  <span id="card-email" class="card-email">{{ $.profile.email }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card-banner">
+              <div class="card-banner-content" style="display: flex; flex-direction: column">
+                <!--<h3 id="card-payor" class="insurance-text">{{ $.profile.admedika.member.payorInfo }}</h3>
+                <img id="card-bpjs" src="img/assets/fix-bpjs.png" alt="img/assets/fix-bpjs.png" ng-show="$.profile.admedika.member.bpjsId" />-->
+                <div style="flex:50%">
+                  <h3 id="card-payor" class="insurance-text">{{ $.profile.admedika.member.payorInfo }}</h3>
+                </div>
+                <div style="flex:50%">
+                  <img id="card-bpjs" src="img/assets/fix-bpjs.png" alt="img/assets/fix-bpjs.png" style="height:auto; width:100%" ng-show="1" /><!--$.profile.admedika.member.bpjsId-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div style="display: flex; flex-direction: row;"><!----class="card-content" >
+        <!--<div class="row margin-top-small" style="height:100%">-->
+          <div style="flex:50%;max-width:50%"><!--class="col card-list" flex-basis: 50%;flex-grow:1-->
+            <div class="row card-info">
+              <div class="col col-40 label-card">
+                No. AdMedika
+              </div>
+              <div id="card-number" class="col col-50 content-card text-red-v3 font-bold">
+                {{ $.profile.admedika.cardNumber }}
+              </div>
+            </div>
+            <div class="row card-info">
+              <div class="col col-40 label-card">
+                Corporate
+              </div>
+              <div id="card-corporate" class="col col-50 content-card">
+                {{ $.profile.admedika.member.corporateInfo }}
+              </div>
+            </div>
+            <div class="row card-info">
+              <div class="col col-40 label-card">
+                Policy
+              </div>
+              <div id="card-policy" class="col col-50 content-card">
+                {{ $.profile.admedika.member.policyNumber }}
+              </div>
+            </div>
+            <div class="row card-info">
+              <div class="col col-40 label-card">
+                Date of birth
+              </div>
+              <div id="card-birthdate" class="col col-50 content-card">
+                {{ $.parseBirthdate($.profile.admedika.member.dateOfBirth || $.profile.birthday) }}
+              </div>
+            </div>
+            <div class="row card-info">
+              <div class="col col-40 label-card">
+                Member Type
+              </div>
+              <div id="card-type" class="col col-50 content-card">
+                {{ $.profile.admedika.member.memberType }}
+              </div>
+            </div>
+            <div class="row card-info">
+              <div class="col col-40 label-card">
+                Benefit
+              </div>
+              <div id="card-benefit" class="col col-50 content-card">
+                {{ $.parseBenefits($.profile.admedika.plans) }}
+              </div>
+            </div>
+            <div class="row card-info margin-top-x-small">
+              <div class="col col-40 label-card">
+                No. BPJS Kesehatan
+              </div>
+              <div id="card-bpjsId" class="col col-50 content-card text-red-v3 font-bold">
+                {{ $.profile.admedika.member.bpjsId || '-' }}
+              </div>
+            </div>
+            <div class="row card-info">
+              <div class="col col-40 label-card">
+                FASKES Tingkat I
+              </div>
+              <div id="card-faskesLevel1" class="col col-50 content-card">
+                {{ $.profile.admedika.member.faskesLevel1 || '-' }}
+              </div>
+            </div>
+            <div class="row card-info">
+              <div class="col col-40 label-card">
+                Kelas Rawat
+              </div>
+              <div id="card-bpjsType" class="col col-50 content-card">
+                {{ $.profile.admedika.member.bpjsType || '-' }}
+              </div>
+            </div>
+          </div>
+          <div style="flex:50%;max-width:50%;display: flex; flex-direction: column;justify-content: space-between;align-self: stretch"><!--class="col image-card-qr"-->
+
+              <div style="width:100%"><!--class="col col-75 text-right" margin-left:auto;float:right; -->
+                <div style="height;80%; width:80%:max-height:100%;max-width:100%;margin-left:auto;float:right; ">
+                  <barcode type="code128c" string="{{ $.profile.admedika.cardNumber }}" options="{ width: 1, height: 60 }"></barcode>
+                </div>
+                <div style="height:80%; width:80%:max-height:100%; max-width:100%;margin-left:auto;float:right; ">
+                  <qrcode data="{{ $.profile.admedika.cardNumber }}"></qrcode>
+                </div>
+              </div>
+
+              <div style="margin-left:auto;float:right"><!-- class="col col-75 text-right" -->
+                <img src="img/assets/admedika-link.png" class="banner-card-bottom" />
+              </div>
+
+          </div>
+      </div>
+    </article>
+    <ion-infinite-scroll on-infinite="$.getMember()" ng-if="!$.hasMember" distance="100%"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

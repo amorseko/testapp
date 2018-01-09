@@ -1,0 +1,99 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "com.lampa.startapp",
+        "scope": null,
+        "escapedName": "com.lampa.startapp",
+        "name": "com.lampa.startapp",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "D:\\my project\\ionic\\myPersona"
+    ]
+  ],
+  "_from": "com.lampa.startapp@latest",
+  "_id": "com.lampa.startapp@0.1.4",
+  "_inCache": true,
+  "_location": "/com.lampa.startapp",
+  "_nodeVersion": "4.2.4",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/com.lampa.startapp-0.1.4.tgz_1459856630614_0.2796547142788768"
+  },
+  "_npmUser": {
+    "name": "lampa",
+    "email": "olala_ah@rambler.ru"
+  },
+  "_npmVersion": "2.14.12",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "com.lampa.startapp",
+    "scope": null,
+    "escapedName": "com.lampa.startapp",
+    "name": "com.lampa.startapp",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/com.lampa.startapp/-/com.lampa.startapp-0.1.4.tgz",
+  "_shasum": "b1d9b0b47c2c1ab79339cfd22e9423fe59efd7d2",
+  "_shrinkwrap": null,
+  "_spec": "com.lampa.startapp",
+  "_where": "D:\\my project\\ionic\\myPersona",
+  "author": {
+    "name": "lampaa"
+  },
+  "bugs": {
+    "url": "https://github.com/lampaa/com.lampa.startapp/issues"
+  },
+  "cordova": {
+    "id": "com.lampa.startapp",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "description": "Phonegap plugin for check or launch other application in android device.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "b1d9b0b47c2c1ab79339cfd22e9423fe59efd7d2",
+    "tarball": "https://registry.npmjs.org/com.lampa.startapp/-/com.lampa.startapp-0.1.4.tgz"
+  },
+  "gitHead": "0d1999df9ebd759fa2843f4439c3412603c10f88",
+  "homepage": "https://github.com/lampaa/com.lampa.startapp#readme",
+  "keywords": [
+    "cordova",
+    "startapp",
+    "lampa",
+    "extra",
+    "extrafields",
+    "hasextra",
+    "cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "lampa",
+      "email": "olala_ah@rambler.ru"
+    }
+  ],
+  "name": "com.lampa.startapp",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lampaa/com.lampa.startapp.git"
+  },
+  "scripts": {},
+  "version": "0.1.4"
+}

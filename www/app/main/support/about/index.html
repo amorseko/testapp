@@ -1,0 +1,13 @@
+<ion-view view-title="About" align-title="center">
+	<ion-nav-title>
+		<p id="about-title" class="title">{{ $.page.title || "About" }}</p>
+	</ion-nav-title>
+	<ion-content class="has-header has-footer support-content" padding="true">
+		<article ng-if="$.page._id">
+			<h4 id="about-subtitle" class="text-center assertive" ng-show="$.page.subtitle">{{ $.page.subtitle }}</h4>
+			<div id="about-content" ng-bind-html-unsafe="$.page.content"></div>
+		</article>
+		<ion-infinite-scroll on-infinite="$.getPage()" ng-if="!$.hasPage" distance="100%"></ion-infinite-scroll>
+	</ion-content>
+	<toolbar type="footer"></toolbar>
+</ion-view>

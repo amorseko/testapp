@@ -1,0 +1,30 @@
+<section>
+  <div class="padding">
+    <center>
+      <img src="img/assets/provider-details.png" alt="provider-details" class="center" width="37.5%" />
+    </center>
+    <br>
+    <p class="text-center positive margin-bottom-none provider-name">
+      {{ data.providerName }}
+    </p>
+    <p class="text-center line-height-small">
+      <small>{{ data.providerAddress }}</small>
+    </p>
+    <center>
+      <button class="button button-small button-positive line-height-small margin-bottom-small provider-number" ng-show="data.providerPhoneNum" ng-click="data.call(data.providerPhoneNum)">
+        <img src="img/assets/provider-phone.png" alt="provider-phone" class="image-icon" />
+        <span class="provider-phone">{{ data.providerPhoneNum }}</span>
+      </button>
+    </center>
+    <div ng-show="data.latitude && data.longitude">
+      <div map-lazy-load="https://maps.googleapis.com/maps/api/js" map-lazy-load-params="{{ data.googleMapsUrl }}">
+        <ng-map center="[{{ data.latitude }}, {{ data.longitude }}]" class="margin-bottom-x-small" zoom="15" disable-default-u-i="true" style="height:150px;">
+          <marker position="[{{ data.latitude }}, {{ data.longitude }}]" title="{{ data.providerName }}"></marker>
+        </ng-map>
+      </div>
+      <p class="text-center positive" ng-click="data.openMaps(data.latitude, data.longitude)">
+        <strong>klik untuk membuka peta</strong>
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+<div class="row header-medika">
+  <div class="col">
+		<div class="row menu-container" >
+			<div id="header-member" style="font-size: 80%" class="col menu-item first" ui-sref="app.main.admedika.member" ui-sref-active="menu-item-active"><a>{{ $root.widthPage <= 320 ? 'Member' : 'Member Info' }}</a></div>
+			<div id="header-benefit" style="font-size: 80%" class="col menu-item all" ui-sref="app.main.admedika.benefit" ui-sref-active="menu-item-active"><a>Benefit</a></div>
+			<div id="header-claim" style="font-size: 80%" class="col menu-item mid" ui-sref="app.main.admedika.claim" ui-sref-active="menu-item-active"><a>{{ $root.widthPage <= 320 ? 'Claim' : 'Claim History' }}</a></div>
+			<div id="header-provider" style="font-size: 80%" class="col menu-item all" ui-sref="app.main.admedika.provider" ui-sref-active="menu-item-active"><a>Provider</a></div>
+			<!-- Issue #11.3
+      <div id="header-status" class="col menu-item last" ui-sref="app.main.admedika.status" ui-sref-active="menu-item-active"><a>My Status</a></div>
+      -->
+		</div>
+	</div>
+</div>

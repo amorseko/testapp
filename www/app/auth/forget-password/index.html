@@ -1,0 +1,41 @@
+<ion-view view-title="Forget Password" cache-view="false">
+  <ion-nav-title>
+    <!-- LOGO HERE  -->
+    <p class="title"><img src="img/assets/header-logo.png"></p>
+  </ion-nav-title>
+  <ion-content class="has-header" has-bouncing="false">
+    <!-- MAIN CONTENT -->
+    <section class="padding-top-x-large" id="auth">
+      <img src="img/assets/forgot-password.png" class="image-size-medium margin-auto block-display" alt="Forgot Password" />
+      <!-- MAIN CONTENT NOTICE HERE  -->
+      <div class="width-60 margin-auto">
+        <h3 id="forgetPass" ng-if="$root.widthPage >= 720" class="text-center">Lupa Password?</h3>
+        <h4 ng-if="$root.widthPage < 720" class="text-center">Lupa Password?</h4>
+        <p class="text-center tablet-text-medium">Masukan email untuk mendapatkan password anda</p>
+      </div>
+      <!-- FORM FORGOT PASSWORD HERE  -->
+      <form name="form" class="width-80 margin-auto tablet-margin-top-medium" ng-submit="$.submit(data)" novalidate="true" ng-disabled="$.isLoading">
+        <!-- INPUT EMAIL HERE  -->
+          <label class="item item-input has-shadow margin-none padding-left-medium main-input">
+						<span class="input-label width-10"><i class="ion-ios-email-outline icon-medium text-red-v1"></i></span>
+						<input name="email" type="email" ng-model="data.email" placeholder="email@email.com" ng-required="true">
+					</label>
+          <div class="margin-vertical-small text-error" ng-if="form.email.$touched && form.email.$dirty">
+  					<small ng-show="form.email.$error.required"><i class="ion icon-ios-close-outline"></i>
+  						Please fill your email.
+  					</small>
+  					<small ng-show="form.email.$error.email"><i class="ion icon-ios-close-outline"></i>
+  						Invalid email address.
+  					</small>
+  				</div>
+          <!-- BUTTON SUBMIT HERE  -->
+          <button class="button button-block button-positive border-radius-10" type="submit" ng-disabled="form.$invalid || $.isLoading">{{ $.isLoading ? 'PLEASE WAIT' : 'SEND PASSWORD' }}</button>
+      </form>
+      <!-- NOTICE HELP SUPPORT HERE  -->
+      <p class="width-100 text-x-small text-center">
+        Lupa email/ kesulitan Log in? <span class="text-red-v2" phone-call>Hubungi call center kami</span>
+      </p>
+    </section>
+  </ion-content>
+  <ion-footer-bar align-title="center" class="bar-royal"></ion-footer-bar>
+</ion-view>

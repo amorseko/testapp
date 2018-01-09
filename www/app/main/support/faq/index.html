@@ -1,0 +1,14 @@
+<ion-view view-title="FAQ" align-title="center" ng-cloak>
+	<ion-nav-title>
+		<p id="faq-title" class="title">{{ $.page.title || "FAQ" }}</p>
+	</ion-nav-title>
+	<ion-content class="has-header has-footer support-content" padding="true">
+		<article ng-if="$.page._id">
+			<h3 id="faq-subtitle" class="text-center assertive" ng-show="$.page.subtitle" ng-if="$root.widthPage >= 720">{{ $.page.subtitle }}</h3>
+			<h4 id="faq-subtitle" class="text-center assertive" ng-show="$.page.subtitle" ng-if="$root.widthPage < 720">{{ $.page.subtitle }}</h4>
+			<div id="faq-content" ng-bind-html-unsafe="$.page.content"></div>
+		</article>
+		<ion-infinite-scroll on-infinite="$.getPage()" ng-if="!$.hasPage" distance="100%"></ion-infinite-scroll>
+	</ion-content>
+	<toolbar type="footer"></toolbar>
+</ion-view>

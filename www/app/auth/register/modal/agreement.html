@@ -1,0 +1,18 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-assertive mp-header" id="auth-header" align-title="center">
+    <p class="title"><img src="img/assets/header-logo.png"></p>
+  </ion-header-bar>
+  <ion-content class="has-header has-footer has-subfooter">
+    <article id="agreement" class="padding" ng-if="modal.agreement._id">
+      <h4 id="modal-terms-subtitle" class="text-center positive text-bold" ng-if="modal.agreement.subtitle">{{ modal.agreement.subtitle }}</h4>
+      <div id="terms-content" ng-bind-html-unsafe="modal.agreement.content"></div>
+    </article>
+    <ion-infinite-scroll on-infinite="modal.getTerms()" ng-if="!modal.agreement" distance="100%"></ion-infinite-scroll>
+  </ion-content>
+  <div id="agree" class="bar bar-subfooter bar-positive" ng-click="modal.register()" ng-if="modal.agreement">
+    <div class="title ">Setuju</div>
+  </div>
+  <ion-footer-bar id="disagree" align-title="center" class="bar-light" ng-click="modal.remove()" ng-if="modal.agreement">
+    <div class="title">Tidak Setuju</div>
+  </ion-footer-bar>
+</ion-modal-view>

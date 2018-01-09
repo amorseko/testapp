@@ -1,0 +1,49 @@
+<ion-view view-title="Home" cache-view="false" ng-cloak align-title="center">
+  <ion-nav-title>
+    <p class="title"><img src="img/assets/header-logo.png" class="margin-top-x-small image-size-mypersona-header"></p>
+  </ion-nav-title>
+  <ion-content id="home-content" class="has-footer has-header">
+      <ion-slide-box auto-play="true" show-pager="true" does-continue="true" class="home-slider">
+        <ion-slide>
+          <!-- Issue #7.2 -->
+          <img src="img/assets/slider-final1.jpg" alt="" class="width-100 height-100-percent object-fit cover" />
+        </ion-slide>
+        <ion-slide>
+          <img src="img/assets/slider-final2.jpg" alt="" class="width-100 height-100-percent object-fit cover" />
+        </ion-slide>
+        <ion-slide>
+          <img src="img/assets/slider-final3.jpg" alt="" class="width-100 height-100-percent object-fit cover"/>
+        </ion-slide>
+        <!--<ion-slide>
+          <img src="img/assets/slider-final.jpg" alt="" class="width-100 height-100-percent object-fit cover"/>
+        </ion-slide>
+        <ion-slide>
+          <img src="img/assets/slider-final.jpg" alt="" class="width-100 height-100-percent object-fit cover"/>
+        </ion-slide>
+        <ion-slide>
+          <img src="img/assets/slider-final.jpg" alt="" class="width-100 height-100-percent object-fit cover"/>
+        </ion-slide>-->
+      </ion-slide-box>
+      <div class="home-divider"></div>
+      <div class="home-menu-container" ng-show="$.hasMember">
+        <div class="home-menu-row">
+          <div id="home-admedika" class="home-menu-col" myadmedika="{{ $.profile.admedika.cardNumber }}">
+            <!-- Issue #7.3 -->
+            <img src="img/assets/admedika-link-new.png" class="image-size-medium object-fit contain" alt="MyMedika" />
+          </div>
+          <div id="home-mymerchant" class="home-menu-col" mymerchant>
+            <img src="img/assets/my-merchant-link-black.png" class="image-size-medium object-fit contain" alt="MyMerchant" />
+          </div>
+        </div>
+        <div class="home-menu-row">
+          <div id="home-myhealth" class="home-menu-col" myhealth>
+            <img src="img/assets/my-health-link-black.png" class="image-size-medium object-fit contain" alt="Health" />
+          </div>
+          <div id="home-mypay" class="home-menu-col" mypay>
+            <img src="img/assets/my-pay-link-black.png" class="image-size-medium object-fit contain" alt="MyPay" />
+          </div>
+        </div>
+      </div>
+    <ion-infinite-scroll on-infinite="$.getMember()" ng-if="!$.hasMember" distance="100%"></ion-infinite-scroll>
+  </ion-content>
+  <toolbar type="footer"></toolbar>

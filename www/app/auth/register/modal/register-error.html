@@ -1,0 +1,12 @@
+<div class="mp-alert-error">
+  <p style="color: black;">
+    {{ data.type || 'PERHATIAN' }}
+  </p>
+  <br ng-hide="data.type.toLowerCase() === 'kartu admedika'">
+  <p ng-show="data.type.toLowerCase() === 'kartu admedika'">
+    <i class="ion-help-circled fa-2x"></i>
+  </p>
+  <p style="color: black;">
+    {{ data.message || 'Register gagal' }}
+  </p>
+</div>

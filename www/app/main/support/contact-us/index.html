@@ -1,0 +1,24 @@
+<ion-view view-title="Contact Us / Inquiry">
+  <ion-nav-title>
+    <!-- TITLE HEADER HERE  -->
+    <p class="title">
+      <img src="img/assets/contact-support.png" class="image-size-contact-support top-4 relative-position"> Contact Support
+    </p>
+  </ion-nav-title>
+  <ion-content class="has-header has-footer">
+    <!-- MAIN CONTENT  -->
+    <section id="contact-us" class="padding-top-large height-full flex-container-column">
+      <!-- FORM CONTACT SUPPORT HERE  -->
+      <form class="width-80 margin-auto" name="form" ng-submit="$.submit(data)">
+        <span class="input-label padding-bottom-small width-100">Pesan Anda</span>
+        <label class="item item-input item-stacked-label has-shadow border-radius-10">
+          <!-- INPUT FORM HERE  -->
+					<textarea ng-model="data.content" class="height-x-large" ng-required="true"></textarea>
+				</label>
+        <!-- BUTTON SUBMIT HERE  -->
+        <button type="submit" class="button button-block button-positive margin-top-small" ng-disabled="form.$invalid || $.isLoading">{{ $.isLoading ? 'PLEASE WAIT' : 'SEND' }}</button>
+      </form>
+    </section>
+  </ion-content>
+  <toolbar type="footer"></toolbar>
+</ion-view>

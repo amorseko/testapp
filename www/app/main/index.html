@@ -1,0 +1,84 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <!-- HEADER -->
+  <ion-side-menu-content>
+    <ion-nav-bar id="mypersona-header-bar" class="bar-assertive header-content">
+      <ion-nav-back-button></ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button id="sidemenu" class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+      </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <div ng-if="'app.main.home' | isState">
+          <!-- Issue #7.1
+          <button id="message" class="button button-icon icon ion-ios-email-outline right-35 absolute-position float-right">
+      			<span class="badge inline-block-display text-center white-space-nowrap bg-white left-1 margin-left-none border-radius-10">0</span>
+      		</button>
+          -->
+          <button id="setting" class="button button-icon icon ion-ios-gear-outline" ui-sref="app.main.setting"></button>
+        </div>
+        <div ng-if="'app.main.admedika.member' | isState">
+          <!--<button class="button button-icon icon ion-ios-email-outline right-5 absolute-position float-right">
+            <span class="badge absolute-position inline-block-display text-small text-center white-space-nowrap bg-white left-1 margin-left-none border-radius-10">0</span>
+          </button>-->
+        </div>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <!-- MAIN VIEW -->
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+  <ion-side-menu side="left">
+    <!-- SIDEBAR HEADER -->
+    <ion-header-bar class="bar-stable header-sidebar">
+      <img src="img/assets/header-logo.png" class="image-size-header-sidebar margin-left-small">
+    </ion-header-bar>
+    <!-- SIDEBAR CONTENT -->
+    <ion-content has-bouncing="false">
+      <div class="item avatar bg-user-avatar-sidebar" image-upload>
+        <!-- IMAGE -->
+        <div class="row">
+          <div class="col">
+            <toolbar type="avatar"></toolbar>
+          </div>
+        </div>
+        <!-- PROFILE NAME -->
+        <div class="row">
+          <div class="col">
+            <h2 class="text-white text-center">{{ $.profile.name | titleize }}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="text-center margin-vertical-large" ng-show="$.isLoading">please wait . . .</div>
+      <ion-list ng-hide="$.isLoading">
+        <ion-item id="sidemenu-admedika" menu-toggle class="height-65px-force" myadmedika="{{ $.profile.admedika.cardNumber }}">
+          <img src="img/assets/my-addmedika-info-setting.png" class="image-size-item-sidebar" />
+          <label class="relative-position bottom-10 left-10 text-medium">MyAdMedika</label>
+        </ion-item>
+        <ion-item id="sidemenu-myhealth" menu-toggle class="inactive-item height-65px-force" myhealth>
+          <img src="img/assets/sidebar-my-health-inactive.png" class="image-size-item-sidebar" />
+          <label class="relative-position bottom-10 left-10 text-medium">MyHealth</label>
+        </ion-item>
+        <ion-item id="sidemenu-mymerchant" menu-toggle class="inactive-item height-65px-force" mymerchant>
+          <img src="img/assets/my-admedika-info-inactive.png" style="margin-top: 3px;" class="image-size-item-sidebar" />
+          <label-x class="inactive-item relative-position bottom-5 left-10 text-medium">MyMerchant</label-x>
+        </ion-item>
+        <ion-item id="sidemenu-mypay" menu-toggle class="inactive-item height-65px-force" mypay>
+          <img src="img/assets/sidebar-my-pay-inactive.png" class="image-size-item-sidebar" />
+          <label class="inactive-item relative-position bottom-10 left-10 text-medium">MyPay</label>
+        </ion-item>
+        <ion-item id="sidemenu-setting" ui-sref="app.main.setting" menu-toggle class="height-65px-force">
+          <i class="icon ion-ios-gear-outline text-xxl-large text-red-v6"></i>
+          <label class="relative-position bottom-10 left-10 text-medium">Setting</label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+    <!-- SIDEBAR FOOTER -->
+    <ion-footer-bar class="bar-footer-sidebar">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col" ng-if="$root.widthPage < 720"></div>
+        <div id="sidemenu-logout" class="col relative-position bottom-5 block-display cursor-pointer text-right text-red-v7 t-padding-top-10" ng-click="$root.logout()" menu-close>
+          <img src="img/assets/logout-icon.png" alt="Logout" class="image-size-item-sidebar top-3 relative-position" /> <label>Logout</label>
+        </div>
+      </div>
+    </ion-footer-bar>
+  </ion-side-menu>
+</ion-side-menus>

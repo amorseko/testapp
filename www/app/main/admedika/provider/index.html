@@ -1,0 +1,84 @@
+<ion-view view-title="Provider" ng-cloak align-title="center">
+  <ion-content class="has-header has-footer" has-bouncing="false">
+    <section class="flex-container-column">
+      <admedika-toolbar type="header"></admedika-toolbar>
+      <!-- FILTER/SHORTING CONTENT HERE -->
+      <div class="text-white text-small">
+        <div class="row margin-none padding-none height-45px sub-header">
+          <!-- FILTER PROVIDER CONTENT HERE -->
+          <form id="form-search-provider" class="col col-60 margin-none bg-red-v1" name="search" novalidate="true" ng-submit="$.submit(filter)" role="search">
+            <div class="list list-inset margin-left-none margin-bottom-none margin-right-none margin-top-x-small padding-none border-radius-10" ng-click="$.isLoading && $.alertLoading()">
+              <label class="item item-input margin-none padding-right-none padding-top-none padding-bottom-none padding-left-small-force border-none">
+                <input id="search-provider" type="text" placeholder="Search Provider" class="padding-left-none padding-top-none padding-bottom-none padding-right-small-force" ng-model="filter.match" ng-disabled="$.isLoading">
+                <i id="provider-search" class="icon ion-search placeholder-icon transform-360 relative-position right-10 bottom-4" ng-click="!$.isLoading && $.submit(filter)"></i>
+              </label>
+            </div>
+          </form>
+          <!-- SHORTING CONTENT HERE -->
+          <div id="provider-sort" class="col col-20 bg-gray-v2 padding-none margin-none" ng-click="$.isLoading ? $.alertLoading() : $.sort()" ng-class="{'image-disabled': $.isLoading}">
+            <img src="img/assets/sort-a-z.png" id="sortdate-provider" class="image-size-sort object-fit contain relative-position t-header-image height-45px" />
+          </div>
+          <!-- NEAR ME CONTENT HERE -->
+          <div id="provider-near" class="col col-20 bg-gray-v3 padding-none margin-none" ng-click="$.isLoading ? $.alertLoading() : $.nearMe()" ng-class="{'image-disabled': $.isLoading}">
+            <!-- <a class="text-center text-white"> -->
+            <img src="img/assets/near-me.png" id="provider-position" alt="{{ $.latlong }}" class="relative-position image-size-near-me object-fit contain t-header-image height-45px" />
+            <!-- </a> -->
+          </div>
+        </div>
+      </div>
+      <!-- FILTER CONTENT OPTIONS HERE -->
+      <div class="height-auto bg-white height-45px sub-header">
+        <form name="form" class="row padding-none margin-none height-45px" ng-submit="$.submit(filter)" novalidate="true">
+          <div class="col col-30 padding-bottom-none padding-right-none padding-top-small margin-none bg-white mobile-provider" ng-click="$.isLoading && $.alertLoading()">
+            <!-- OPTION CITIES CONTENT HERE -->
+            <label class="item item-input item-select item-stacked-label border-radius-10 padding-top-x-small padding-bottom-x-small padding-right-none padding-left-none margin-none text-gray-v5 overflow-hidden white-space-nowrap text-overflow-ellipsis">
+              <select name="cities" class="text-small padding-right-none padding-top-none padding-bottom-none padding-left-small-force margin-none float-left text-gray-v5 white-space-nowrap text-overflow-ellipsis max-width-60px" ng-model="filter.providerCity" ng-init="filter.providerCity = ''" ng-disabled="$.isLoading">
+                <option id="provider-city" class="text-overflow-ellipsis overflow-hidden white-space-nowrap" value="">Semua Kota</option>
+                <option class="text-overflow-ellipsis overflow-hidden white-space-nowrap" ng-repeat="city in $.profile.admedika.cities track by city.name" value="{{ city.name }}" ng-if="city.name">{{ city.name | titleize }}</option>
+              </select>
+            </label>
+          </div>
+          <div class="col col-30 padding-bottom-none padding-right-none padding-top-small margin-none bg-white mobile-provider" ng-click="$.isLoading && $.alertLoading()">
+            <!-- FILTER BENEFITES CONTENT HERE -->
+            <label class="item item-input item-select item-stacked-label border-radius-10 padding-top-x-small padding-bottom-x-small padding-right-none padding-left-none margin-none text-gray-v5 overflow-hidden white-space-nowrap text-overflow-ellipsis">
+              <select name="benefits" class="text-small padding-right-none padding-top-none padding-bottom-none padding-left-small-force margin-none float-left text-gray-v5 white-space-nowrap text-overflow-ellipsis max-width-60px" ng-model="filter.planId" ng-init="filter.planId = '*'" ng-disabled="$.isLoading">
+                <option id="provider-benefit" class="text-overflow-ellipsis overflow-hidden white-space-nowrap" value="*">Semua Benefit</option>
+                <option class="text-overflow-ellipsis overflow-hidden white-space-nowrap" ng-repeat="benefit in $.profile.admedika.plans track by benefit.planType" value="{{ benefit.planId }}" ng-if="benefit.planId">{{ benefit.planType | titleize }}</option>
+              </select>
+            </label>
+          </div>
+          <!-- SUBMIT FILTER CONTENT HERE -->
+          <div class="col col-20 padding-bottom-none padding-right-none mobile-provider padding-top-small margin-none bg-white sub-header" ng-click="$.isLoading && $.alertLoading()">
+            <button name="button" class="button button-positive button-submit-filter border-radius-10 text-small line-height-none height-28px min-width-none min-height-none medium-button" type="submit" ng-disabled="$.isLoading">Submit</button>
+          </div>
+          <!-- RESET FILTER CONTENT HERE -->
+          <div id="provider-reset" class="col col-20 padding-none margin-none bg-red-v3 text-center text-white sub-header" ng-click="$.isLoading ? $.alertLoading() : $.reset(filter)" ng-class="{'image-disabled': $.isLoading}">
+            <img id="reset-filter-image" src="img/assets/reset-filter.png" alt="Reset Filter" class="object-fit contain relative-position t-header-image " />
+          </div>
+        </form>
+      </div>
+      <div>
+        <div ng-hide="$.hasData" class="text-center margin-top-x-large">
+          <h4 class="text-grey-v5">Please Wait ...</h4>
+        </div>
+        <div ng-repeat="(key, values) in $.groupProviders track by $index" ng-cloak>
+          <p class="text-black text-left padding-left-x-medium padding-bottom-x-small padding-top-x-small bg-gray-v4 margin-none text-small">{{ key | uppercase }}</p>
+          <div class="text-small text-gray-v1" ng-if="values.length">
+            <a id="provider-item" class="item height-60 provider-item" ng-repeat="item in values track by $index" ng-click="$.show(item)">
+              <div>
+                <label class="block-display overflow-hidden width-80 assertive text-overflow-ellipsis provider-label">{{ item.providerName }}</label>
+                <label class="text-sub-label">{{ item.providerId }}</label>
+              </div>
+              <div class="relative-position bottom-30">
+                <i class="icon ion-chevron-right float-right"></i>
+                <span ng-if="item.distance" class="distance">{{ item.distance.text || (item.distance.value ? item.distance.value + ' km' : item.distance.value) }}</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <ion-infinite-scroll on-infinite="$.getProviders()" distance="20%" ng-if="!$.hasProviders"></ion-infinite-scroll>
+    </section>
+  </ion-content>
+  <admedika-toolbar type="footer"></admedika-toolbar>
+</ion-view>

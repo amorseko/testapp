@@ -1,0 +1,35 @@
+<ion-view view-title="Benefit" ng-cloak align-title="center">
+  <ion-content class="has-header has-footer" has-bouncing="false">
+		<admedika-toolbar type="header"></admedika-toolbar>
+    <div class="tab-list">
+      <!-- TAB COLLAPSE CONTENT HERE -->
+      <div ng-repeat="plan in $.plans">
+        <ion-item class="tab-item-stable padding-bottom-small" ng-click="$.toggleGroup(plan.planId)" ng-class="{ active: $.isGroupShown(plan.planId) }">
+          <!-- TAB COLLAPSE HEADING HERE -->
+          <div>
+            <p class="text-medium text-red-v3">{{ plan.planType }}</p>
+            <p class="text-medium">
+              <label class="text-red-v5">Policy Date</label>: <label>{{ $.parseDate(plan.policyStartDate) }} - {{ $.parseDate(plan.policyEndDate) }}</label>
+            </p>
+            <p class="text-medium">
+              <label>Max IDR</label>: <label>{{ plan.maxIdr | number: 0 }} {{ plan.frequencyDesc }}</label>
+            </p>
+          </div>
+          <i class="icon" ng-class="$.isGroupShown(plan.planId) ? 'ion-chevron-down' : 'ion-chevron-right'"></i>
+        </ion-item>
+        <!-- TAB COLLAPSE DETAIL HERE -->
+        <ion-item class="tab-item-accordion" ng-show="$.isGroupShown(plan.planId)">
+          <div class="tab-content-list" ng-repeat="item in plan.benefits">
+            <p class="text-medium text-red-v5">{{ item.benefitName | uppercase }} {{ $.parseFrequencyDesc(item.frequencyDesc) | uppercase }}</p>
+            <p class="text-medium">
+              <label class="text-red-v5">Max</label>: <label class="">{{ item.maxIdr | number: 0 }} per Claims/Occurance</label>
+            </p>
+          </div>
+          <ion-infinite-scroll ng-if="!plan.hasBenefits"></ion-infinite-scroll>
+        </ion-item>
+      </div>
+    </div>
+    <ion-infinite-scroll on-infinite="$.getPlans()" distance="15%" ng-if="!$.hasPlans"></ion-infinite-scroll>
+  </ion-content>
+  <admedika-toolbar type="footer"></admedika-toolbar>
+</ion-view>

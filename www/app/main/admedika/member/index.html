@@ -1,0 +1,179 @@
+<ion-view view-title="Member Info" ng-cloak align-title="center">
+  <ion-nav-title>
+    <p class="title t-title"><img src="img/assets/admedika-logo-white.png" class="image-size-admedika-header top-5 relative-position margin-right-medium"> My AdMedika</p>
+  </ion-nav-title>
+  <ion-content class="has-header has-footer" has-bouncing="false">
+    <admedika-toolbar type="header"></admedika-toolbar>
+    <!-- MAIN CONTENT HERE  -->
+    <section class="flex-container-column">
+      <article ng-show="$.profile.email">
+        <!-- HEADER PROFILE HERE  -->
+        <div class="width-100 bg-profile padding-top-small large-text">
+          <div class="text-center margin-auto relative-position" image-upload>
+            <toolbar type="avatar"></toolbar>
+          </div>
+          <!-- NAME PROFILE PERSON HERE  -->
+          <div class="margin-auto width-80 text-center text-white text-small margin-top-small large-text">
+            <p id="member-fullname" class="padding-none margin-none text-white text-x-large">{{ $.profile.admedika.member.fullName }}</p>
+            <small>{{ $.profile.id }}</small>
+          </div>
+          <!-- BUTTON HEADER PROFILE HERE  -->
+          <div class="row margin-auto">
+            <!-- BUTTON CALL CENTER HERE  -->
+            <div class="col">
+              <center>
+                <button class="button button-stable action-button text-x-small" phone-call="{{ $.profile.admedika.member.helpLine }}">
+                  <img src="img/assets/call-button.png"  class="image-size-x-small relative-position top-4 padding-none margin-none"/> 24 Hours Call Center
+                </button>
+              </center>
+
+            </div>
+            <!-- BUTTON SHOW MY CARD HERE -->
+            <div class="col">
+              <center>
+                <button class="button button-stable action-button text-x-small" ui-sref="app.main.admedika.show">
+                  <img src="img/assets/card-icon.png" class="image-size-my-card relative-position top-4 padding-none margin-none" /> Show My Card
+                </button>
+              </center>
+            </div>
+          </div>
+        </div>
+        <div class="t-content large-text"><!-- text-x-small -->
+          <!-- PAYOUT INFO CONTENT HERE -->
+          <div>
+            <div class="row padding-none margin-none">
+              <div class="col panel-heading">
+                <p class="padding-left-small padding-right-small margin-none">PAYOUR INFO</p>
+              </div>
+            </div>
+            <!-- CARD CONTENT HERE -->
+            <div class="row padding-none margin-none">
+              <div class="col control-label">
+                <p class="padding-left-small padding-right-small margin-none">Card</p>
+              </div>
+              <div class="col col-67">
+                <p id="member-payor" class="text-content-card-slim">{{ $.profile.admedika.member.payorInfo }}</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <!-- CORPORATE INFO CONTENT HERE -->
+            <div class="row padding-none margin-none">
+              <div class="col panel-heading">
+                <p class="padding-left-small padding-right-small margin-none">CORPORATE INFO</p>
+              </div>
+            </div>
+            <div class="row padding-none margin-none">
+              <!-- CORP CONTENT HERE  -->
+              <div class="col control-label">
+                <p class="padding-left-small padding-right-small margin-none">Corp.</p>
+              </div>
+              <div class="col col-67">
+                <p id="member-corporate" class="text-content-card-slim">{{ $.profile.admedika.member.corporateInfo }}</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <!-- MEMBER INFO CONTENT HERE  -->
+            <div class="row padding-none margin-none">
+              <div class="col panel-heading">
+                <p class="padding-left-small padding-right-small margin-none">MEMBERS INFO</p>
+              </div>
+            </div>
+            <div class="row padding-none margin-none border-bottom-gray-eee">
+              <!-- MEMBER NO ADMEDIKA CONTENT HERE -->
+              <div class="col control-label">
+                <p class="padding-left-small padding-right-small margin-none">No. Admedika</p>
+              </div>
+              <div class="col col-67">
+                <p id="member-card" class="text-content-card-slim">{{ $.profile.admedika.cardNumber }}</p>
+              </div>
+            </div>
+            <div class="row padding-none margin-none border-bottom-gray-eee">
+              <!-- POLICY CONTENT HERE -->
+              <div class="col control-label">
+                <p class="padding-left-small padding-right-small margin-none">Policy.</p>
+              </div>
+              <div class="col col-67">
+                <p id="member-policy" class="text-content-card-slim">{{ $.profile.admedika.member.policyNumber }}</p>
+              </div>
+            </div>
+            <div class="row padding-none margin-none border-bottom-gray-eee">
+              <!-- DATE OF BIRTH CONTENT HERE -->
+              <div class="col control-label">
+                <p class="padding-left-small padding-right-small margin-none">Date of Birth</p>
+              </div>
+              <div class="col col-67">
+                <p id="member-birthdate" class="text-content-card-slim">{{ $.parseBirthdate($.profile.admedika.member.dateOfBirth || $.profile.birthday) }}</p>
+              </div>
+            </div>
+            <div class="row padding-none margin-none border-bottom-gray-eee">
+              <!-- MEMBER TYPE CONTENT HERE -->
+              <div class="col control-label">
+                <p class="padding-left-small padding-right-small margin-none">Member Type</p>
+              </div>
+              <div class="col col-67">
+                <p id="member-type" class="text-content-card-slim">{{ $.profile.admedika.member.memberType }}</p>
+              </div>
+            </div>
+            <div class="row padding-none margin-none border-bottom-gray-eee">
+              <!-- BENEFIT CONTENT HERE -->
+              <div class="col control-label">
+                <p class="padding-left-small padding-right-small margin-none">Benefit</p>
+              </div>
+              <div class="col col-67">
+                <p id="member-benefit" class="text-content-card-slim">{{ $.parseBenefits($.profile.admedika.plans) }}</p>
+              </div>
+            </div>
+            <div class="row padding-none margin-none border-bottom-gray-eee">
+              <!-- MYPERSONA CONTENT HERE -->
+              <div class="col control-label">
+                <p class="padding-left-small padding-right-small margin-none">MyPersona ID</p>
+              </div>
+              <div class="col col-67">
+                <p id="member-id" class="text-content-card-slim">{{ $.profile.id }}</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="row padding-none margin-none">
+              <!-- BPJS KESEHATAN CONTENT HERE -->
+              <div class="col panel-heading">
+                <p class="padding-left-small padding-right-small margin-none">BPJS KESEHATAN</p>
+              </div>
+            </div>
+            <div class="row padding-none margin-none border-bottom-gray-eee">
+              <!-- NO BPJS CONTENT HERE -->
+              <div class="col control-label">
+                <p class="padding-left-small padding-right-small margin-none">No. BPJS</p>
+              </div>
+              <div class="col col-67">
+                <p id="member-bpjsId" class="text-content-card-slim">{{ $.profile.admedika.member.bpjsId || '-' }}</p>
+              </div>
+            </div>
+            <div class="row padding-none margin-none border-bottom-gray-eee">
+              <!-- FAKSES TINGKAT CONTENT HERE -->
+              <div class="col control-label">
+                <p class="padding-left-small padding-right-small margin-none">Faskes Tingkat</p>
+              </div>
+              <div class="col col-67">
+                <p id="member-faskesLevel1" class="text-content-card-slim">{{ $.profile.admedika.member.faskesLevel1 || '-' }}</p>
+              </div>
+            </div>
+            <div class="row padding-none margin-none border-bottom-gray-eee">
+              <!-- KELAS RAWAT CONTENT HERE -->
+              <div class="col control-label">
+                <p class="padding-left-small padding-right-small margin-none">Kelas Rawat</p>
+              </div>
+              <div class="col col-67">
+                <p id="member-bpjsType" class="text-content-card-slim">{{ $.profile.admedika.member.bpjsType || '-' }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+    <ion-infinite-scroll on-infinite="$.getMember()" ng-if="!$.hasMember" distance="100%"></ion-infinite-scroll>
+  </ion-content>
+  <admedika-toolbar type="footer"></admedika-toolbar>
+</ion-view>

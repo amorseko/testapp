@@ -1,0 +1,75 @@
+<ion-view view-title="Register" cache-view="true">
+  <ion-nav-title>
+    <p class="title"><img src="img/assets/header-logo.png" style="z-index: 1000;"></p>
+  </ion-nav-title>
+  <ion-content class="has-header" has-bouncing="false">
+    <section id="auth">
+      <h2 class="text-center margin-top-l text-red-v1 font-bold margin-bottom-large margin-top-large" ng-if="$root.widthPage >= 720">Register MyPersona</h2>
+      <h4 class="text-center text-red-v1 font-bold margin-bottom-large margin-top-large" ng-if="$root.widthPage < 720">Register MyPersona</h4>
+      <!-- MULAI FORM -->
+      <form name="registerForm" novalidate="true" ng-submit="$.submit(data)" ng-disabled="$.isLoading" ng-init="data = $.params">
+        <div class="list">
+          <!-- INPUT NAME -->
+          <label class="item item-input item-stacked-label border-none padding-horizontal-s-large">
+            <span class="input-label text-grey-v6 text-x-medium">Nama <span class="mp-span-required">*</span></span>
+            <input name="name" type="text" ng-model="data.name" ng-required="true" class="has-shadow main-input">
+          </label>
+          <!-- INPUT BIRTHDATE -->
+          <label class="item item-input item-stacked-label border-none padding-horizontal-s-large" ng-init="data.birthday = data.birthday || ''">
+            <span class="input-label text-grey-v6 text-x-medium">Tanggal Lahir <span class="mp-span-required">*</span></span>
+            <input name="birthday" type="text" ng-readonly="true" ng-model="data.birthday" ng-required="true" ng-click="$.getBirthday(data)" class="has-shadow main-input input-date">
+          </label>
+          <!-- INPUT GENDER -->
+          <label class="item item-input item-stacked-label border-none padding-horizontal-s-large">
+            <span class="input-label text-grey-v6 text-x-medium">Jenis Kelamin <span class="mp-span-required">*</span></span><br>
+            <select name="gender" ng-model="data.gender" class="has-shadow" ng-required="true">
+            <option ng-repeat="(key, val) in { male: 'Pria', female: 'Wanita' }" ng-selected="{{ data.gender === key }}" value="{{ key }}">{{ val }}</option>
+            </select>
+          </label>
+          <!-- INPUT PHONE -->
+          <label class="item item-input item-stacked-label border-none padding-horizontal-s-large">
+            <span class="input-label text-grey-v6 text-x-medium">Nomor Handphone <span class="mp-span-required">*</span></span>
+            <input name="phone" type="text" ng-model="data.phone" ng-required="true" class="has-shadow main-input">
+          </label>
+          <!-- INPUT EMAIL -->
+          <label class="item item-input item-stacked-label border-none padding-horizontal-s-large margin-bottom-small">
+            <span class="input-label text-grey-v6 text-x-medium">Alamat Email <span class="mp-span-required">*</span></span>
+            <input name="email" type="email" ng-model="data.email" ng-required="true" class="has-shadow main-input">
+          </label>
+          <!-- INPUT ADMEDIKA CARD -->
+          <span class="text-grey-v6 text-x-medium padding-horizontal-s-large">Nomor Kartu AdMedika <span class="mp-span-required ion-help-circled" ng-click="$.help()"></span></span>
+          <label class="item item-input item-stacked-label border-none padding-horizontal-s-large">
+            <input name="cardNumber" type="text" ng-model="data.cardNumber" class="has-shadow margin-top-xx-small main-input">
+          </label>
+          <!-- INPUT PASSWORD -->
+          <label class="item item-input item-stacked-label border-none padding-horizontal-s-large">
+            <span class="input-label text-grey-v6 text-x-medium">Password <span class="mp-span-required">*</span></span>
+            <input name="password" type="password" ng-model="data.password" ng-required="true" class="has-shadow main-input">
+          </label>
+          <!-- INPUT RE-PASSWORD -->
+          <label class="item item-input item-stacked-label border-none padding-horizontal-s-large">
+            <span class="input-label text-grey-v6 text-x-medium">Ulangi Password <span class="mp-span-required">*</span></span>
+            <input name="passwordConfirmation" type="password" ng-model="data.passwordConfirmation" ng-required="true" class="has-shadow main-input">
+          </label>
+          <!-- INPUT CODE -->
+          <label class="item item-input item-stacked-label border-none padding-horizontal-s-large">
+            <span class="input-label text-grey-v6 text-x-medium padding-horizontal-s-large">Tuliskan kembali kode dibawah ini <span class="mp-span-required">*</span></span><br>
+            <span class="text-x-large">{{ $.code }}</span>
+            <input name="code" type="text" ng-model="data.code" ng-required="true" class="has-shadow main-input">
+          </label>
+          <span class="warning-input padding-horizontal-s-large">
+            * Harus diisi
+          </span>
+        </div>
+        <!-- BUTTON SUBMIT -->
+        <br>
+        <div class="padding-horizontal-s-large">
+          <button class="button button-block button-positive border-radius-10" type="Submit" ng-disabled="$.isLoading">{{ $.isLoading ? 'PLEASE WAIT' : 'REGISTER MYPERSONA' }}</button>
+          <p class="mp-help-block text-center">
+            Kesulitan register? <span id="call" phone-call>Hubungi call center kami</span>
+          </p>
+        </div>
+      </form>
+    </section>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,46 @@
+<ion-view view-title="Connect My AdMedika Card" ng-cloak>
+  <ion-content class="has-header has-footer" has-bouncing="false" scroll="true">
+    <!-- MAIN CONTENT HERE -->
+    <section id="connect-content" class="flex-container-column bg-admedika-connect height-auto min-height-full padding-top-large text-gray-v5">
+      <!-- IMAGE LOGO CONTENT HERE -->
+      <img src="img/assets/admedika-connect.png" class="image-size-medium block-display margin-auto padding-bottom-small object-fit cover"/>
+      <!-- TEXT NOTICE CONTENT HERE -->
+      <h2 class="text-center" ng-if="$root.widthPage >= 720">Informasi Jaminan Kesehatan Anda</h2>
+      <h4 class="text-center" ng-if="$root.widthPage < 720">Informasi Jaminan Kesehatan Anda</h4>
+      <p class="width-100 padding-top-large margin-auto text-center">Fitur ini hanya untuk peserta AdMedika</p>
+      <div class="width-80 margin-auto">
+        <div class="row padding-none margin-none">
+          <!-- IMAGE ADMEDIKA CONNECT CONTENT HERE -->
+          <div class="col padding-none margin-none">
+            <img src="img/assets/my-addmedika-connect-guide.png" alt="Admedika Connect" class="image-size-admedika-connect object-fit cover"/>
+          </div>
+          <!-- TEXT NOTICE GUIDE INPUT CONTENT HERE -->
+          <div class="col col-75 padding-none margin-none connect-content">
+            <h2 id="text-connect" class="notice-guide" ng-if="$root.widthPage >= 720">Masukan 16 digit nomor kartu AdMedika Anda</h2>
+            <h4 class="notice-guide" ng-if="$root.widthPage < 720">Masukan 16 digit nomor kartu AdMedika Anda</h4>
+          </div>
+        </div>
+      </div>
+      <!-- FORM INPUT ADMEDIKA CONNECT CONTENT HERE -->
+      <form name="form" class="width-80 margin-auto padding-top-small" ng-submit="$.submit(user)" novalidate="true">
+        <!-- INPUT ADMEDIKA NUMBER CONNECT CONTENT HERE -->
+        <label class="item item-input border-radius-10">
+          <input type="text" ng-model="user.cardNumber" ng-minlength="16" ng-maxlength="16" ng-pattern="/^[0-9]*$/" ng-required="true">
+        </label>
+        <!-- SUBMIT BUTTON CONTENT HERE -->
+        <button class="button button-block button-positive" type="submit" ng-disabled="form.$invalid">SUBMIT</button>
+      </form>
+    </section>
+  </ion-content>
+  <ion-footer-bar align-title="center" class="bar-assertive footer-content padding-left-none padding-right-none padding-top-none">
+    <div class="col">
+      <div class="row text-center padding-top-none margin-top-none">
+        <div class="col text-center padding-top-none margin-top-none">
+          <a ui-sref="app.main.home" ui-sref-active="active">
+            <img src="img/assets/footer-icon/home-icon.png" class="image-size-home-footer">
+          </a>
+        </div>
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>

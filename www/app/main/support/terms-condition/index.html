@@ -1,0 +1,14 @@
+<ion-view view-title="Terms &amp; Condition" align-title="center" ng-cloak>
+	<ion-nav-title>
+		<p id="terms-title" class="title">{{ $.page.title || "Terms &amp; Condition" }}</p>
+	</ion-nav-title>
+	<ion-content class="has-header has-footer support-content" padding="true">
+		<article ng-if="$.page._id">
+			<h3 id="terms-subtitle" class="text-center positive text-bold" ng-show="$.page.subtitle" ng-if="$root.widthPage >= 720">{{ $.page.subtitle }}</h3>
+			<h4 id="terms-subtitle" class="text-center positive text-bold" ng-show="$.page.subtitle" ng-if="$root.widthPage < 720">{{ $.page.subtitle }}</h4>
+			<div id="terms-content" ng-bind-html-unsafe="$.page.content"></div>
+		</article>
+		<ion-infinite-scroll on-infinite="$.getPage()" ng-if="!$.hasPage" distance="100%"></ion-infinite-scroll>
+	</ion-content>
+	<toolbar type="footer"></toolbar>
+</ion-view>
